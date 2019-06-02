@@ -1,0 +1,85 @@
+import java.util.*;
+
+public class soulNumber {
+    private static int num;
+
+
+    public static int enterBirthDay(){
+        //生年月日の入力を受け取る
+        Scanner sc = new Scanner(System.in);
+        System.out.println("あなたの生年月日を入力してください:");
+
+        System.out.println("年を入力してください");
+        int year = sc.nextInt();
+
+        System.out.println("月を入力してください");
+        int month = sc.nextInt();
+
+        System.out.println("日を入力してください");
+        int day = sc.nextInt();
+
+        //生年月日を足し、各桁を足す
+        num = year + month + day;
+        num = calcSoulNumber(num);
+
+        return num;
+
+        }
+
+    public  static int calcSoulNumber(int num) {
+        int sum = 0;
+        while (num != 0) {
+            if(sum >= 100){
+                sum += num % 100;
+                num /= 100;
+
+            }else{
+                sum += num % 10;
+                //再右端の桁を得るために%10を利用する
+                num /= 10;
+                //再右端の桁を取り除くためにn/=10を利用する
+            }
+        }
+        if(sum == 10){
+            sum /= 10;
+        }
+
+        return sum;
+        }
+    public static void main(String[] args){
+        enterBirthDay();
+        switch(num){
+            case 1:
+                System.out.println("あなたのソウルナンバーは1で、リーダー気質で切り替えが早い反面、八方美人になりやすい傾向にあります。");
+                break;
+            case 2:
+                System.out.println("あなたのソウルナンバーは2で、頭の回転が早く、冷静沈着である反面、個人プレーに走りがちです。");
+                break;
+            case 3:
+                System.out.println("あなたのソウルナンバーは3で、平和主義者、プラス思考で柔軟な考え方が出来るという特徴があります。");
+                break;
+            case 4:
+                System.out.println("あなたのソウルナンバーは4で、チームの中心になれる素質を持ち、クリエイティブだという特徴があります。");
+                break;
+            case 5:
+                System.out.println("あなたのソウルナンバーは5で、とにかく真面目で頑固な部分を持つ反面、ロマンチストです。");
+                break;
+            case 6:
+                System.out.println("あなたのソウルナンバーは6で、社交的で好奇心旺盛である反面、マイペースな性格です。");
+                break;
+            case 7:
+                System.out.println("あなたのソウルナンバーは7で、優しい反面、繊細で傷つきやすいという特徴を持っています。");
+                break;
+            case 8:
+                System.out.println("あなたのソウルナンバーは8で、テンションが高く、目標を達成まで努力でき、意見をはっきりという特徴を持っています。");
+                break;
+            case 9:
+                System.out.println("あなたのソウルナンバーは9で、自分の気持ちに素直、そして発想力が豊かです。");
+                break;
+            default:
+                System.out.println("エラーが発生しました、終了してください。" );
+
+        }
+
+    }
+}
